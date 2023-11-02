@@ -28,20 +28,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    gap: 64,
-    border: '1px solid red',
   },
   section: {
     position: 'relative',
     width: '90%',
     height: '40%',
+    marginTop: 94,
     paddingHorizontal: 24,
     paddingVertical: 24,
     borderRadius: 40,
     backgroundColor: 'white',
   },
   headlineContainer: {
-    border: '1px solid red',
     width: '100%',
     paddingVertical: 12,
   },
