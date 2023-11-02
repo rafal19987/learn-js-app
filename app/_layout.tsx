@@ -1,6 +1,7 @@
 import { Slot } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useRouter, usePathname } from 'expo-router';
+import { Providers } from './providers';
 
 export default function RootLayout(): React.ReactNode {
   const router = useRouter();
@@ -8,19 +9,24 @@ export default function RootLayout(): React.ReactNode {
   const isHomePage = pathname === '/';
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        {!isHomePage ? (
-          <Pressable style={styles.homeBtn} onPress={() => router.push('/')} />
-        ) : null}
+    <Providers>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          {!isHomePage ? (
+            <Pressable
+              style={styles.homeBtn}
+              onPress={() => router.push('/')}
+            />
+          ) : null}
+        </View>
+        <View style={styles.main}>
+          <Slot />
+        </View>
+        <View style={styles.footer}>
+          <Text style={styles.version}>version 0.1.0</Text>
+        </View>
       </View>
-      <View style={styles.main}>
-        <Slot />
-      </View>
-      <View style={styles.footer}>
-        <Text style={styles.version}>version 0.1.0</Text>
-      </View>
-    </View>
+    </Providers>
   );
 }
 
